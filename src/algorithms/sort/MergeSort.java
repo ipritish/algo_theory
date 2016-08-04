@@ -1,7 +1,7 @@
 package algorithms.sort;
 
 
-//wrong look into it
+//right
 public class MergeSort {
 	
 	
@@ -9,20 +9,23 @@ public class MergeSort {
 		
 		int n1 = q - p + 1;
 		int n2 = r-q;
-		int[] L = new int[n1+1];
-		int[] R = new int[n2+1];
+		int i;
+		int j;
+		int[] L = new int[n1];
+		int[] R = new int[n2];
 		
-		for (int i=0; i<n1; i++){
+		for (i=0; i<n1; i++){
 			L[i] = a[p+i];
 		}
-		for (int j=0; j<n2; j++){
-			R[j] = a[q+j];
+		for (j=0; j<n2; j++){
+			R[j] = a[q+j + 1];
 		}
-		L[n1] = Integer.MAX_VALUE;
-		R[n2] = Integer.MAX_VALUE;
-		int i = 0;
-		int j = 0;
-		for (int k=p ; k<r; k++){
+
+		i = 0;
+		j = 0;
+		int k = p;
+        while (i < n1 && j < n2)
+        {
 			if (L[i] <= R[j]){
 				a[k] = L[i];
 				i++;
@@ -32,14 +35,31 @@ public class MergeSort {
 				a[k] = R[j];
 				j++;
 			}
+			k++;
 		}
+        
+        /* Copy remaining elements of L[] if any */
+        while (i < n1)
+        {
+            a[k] = L[i];
+            i++;
+            k++;
+        }
+ 
+        /* Copy remaining elements of L[] if any */
+        while (j < n2)
+        {
+            a[k] = R[j];
+            j++;
+            k++;
+        }
 		
 		
 	}
 	
 	private static void mergeSort(int[] a, int p, int r){
 		if (p < r){
-			int q = (p + r) /2;
+			int q = p + (r - p) /2;
 			mergeSort(a,p,q);
 			mergeSort(a,(q + 1),r);
 			merge(a,p,q,r);
@@ -53,8 +73,11 @@ public class MergeSort {
 		
 		int[] b = {4,6,2,8,5,0,1,5,7,8};
 		
-		mergeSort(a,0,a.length);
-		mergeSort(b,0,b.length );
+		mergeSort(a,0,a.length - 1);
+		mergeSort(b,0,b.length-1 );
+		
+		//System.out.println(a.length);
+		//System.out.println(b.length);
 		
 		for (int i=0 ; i< a.length; i++){
 			System.out.println(a[i]);
