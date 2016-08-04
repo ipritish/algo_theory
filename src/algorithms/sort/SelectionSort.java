@@ -1,8 +1,8 @@
-package algorithms;
+package algorithms.sort;
 
 public class SelectionSort {
 	
-	public static void selectionSort(int[] a){
+	private static void selectionSort(int[] a){
 		for (int i=0 ;i< a.length;i++){
 			int min_value = a[i];
 			for (int j=i;j<a.length;j++){
