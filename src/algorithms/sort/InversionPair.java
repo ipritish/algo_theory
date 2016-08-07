@@ -50,11 +50,11 @@ public class InversionPair {
 	}
 	
 
-	private static void mergeSort(int[] a, int p, int r){
+	private static void divideArray(int[] a, int p, int r){
 		if (p < r){
 			int q = p + (r - p) /2;
-			mergeSort(a,p,q);
-			mergeSort(a,(q + 1),r);
+			divideArray(a,p,q);
+			divideArray(a,(q + 1),r);
 			findTotalInversionPair(a,p,q,r);
 		}
 		
@@ -66,13 +66,13 @@ public class InversionPair {
 		
 		int[] b = {4,6,2,8,5,0,1,5,7,8};
 		
-		mergeSort(a,0,a.length - 1);
+		divideArray(a,0,a.length - 1);
 		//mergeSort(b,0,b.length-1 );
 		
 		System.out.println("Total inversion pair for a " + getTotalInversionPair());
 		setTotalInversionPair(0);
 		
-		mergeSort(b,0,b.length-1);
+		divideArray(b,0,b.length-1);
 		System.out.println("Total inversion pair for b " + getTotalInversionPair());
 		
 		
