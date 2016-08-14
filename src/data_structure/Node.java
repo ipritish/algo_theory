@@ -1,4 +1,4 @@
-package algorithms.datastructure;
+package data_structure;
 
 public class Node {
 	
