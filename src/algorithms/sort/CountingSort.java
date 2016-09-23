@@ -27,7 +27,6 @@ public class CountingSort {
 		for(int i=0;i<a.length;i++){
 			c[i] = a[i];
 		}
-		a[3] = 4;
 		
 		System.out.println(find_max_val(a));
 		System.out.println(find_max_val(b));
